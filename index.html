@@ -5,10 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Rixxe Hacker Portfolio - Fullstack Developer & Ethical Hacker">
   <meta name="author" content="Rixxe">
-  <title>Haz33r on ur device mdfkr!</title>
+  <title>haz33r on ur device lol.</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* ...styles remain unchanged... */
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+    }
+
+    .animated-img {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 100px;
+      z-index: 10;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
@@ -22,6 +41,8 @@
     frameborder="no"
     allow="autoplay">
   </iframe>
+
+  <img src="https://media.giphy.com/media/Qo2v8YFqGdN56/giphy.gif" alt="Hacker Animation" class="animated-img" />
 
   <div class="loading-screen" id="loadingScreen">
     <pre id="bootText">
