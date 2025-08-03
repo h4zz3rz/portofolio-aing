@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Haz33r Hacker Portfolio - Fullstack Developer & Ethical Hacker">
   <meta name="author" content="Haz33r">
-  <title>Haz33r on ur device lol</title>
+  <title>Haz33r ya??</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
@@ -27,21 +27,6 @@
     a:hover {
       color: #f0f;
       text-shadow: 0 0 5px #f0f;
-    }
-
-    .animated-img {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 100px;
-      z-index: 10;
-      animation: float 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 5px #0f0);
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
 
     .marquee {
@@ -122,6 +107,36 @@
       60% { clip: rect(5px, 9999px, 10px, 0); transform: translate(-2px, -2px); }
       100% { clip: rect(0, 9999px, 0, 0); }
     }
+
+    .controls {
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .controls button {
+      background: #000;
+      color: #0f0;
+      border: 2px solid #0f0;
+      padding: 10px 20px;
+      font-family: 'Share Tech Mono', monospace;
+      cursor: pointer;
+      margin: 5px;
+      text-shadow: 0 0 5px #0f0;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .controls button:hover {
+      background: #0f0;
+      color: #000;
+    }
+
+    .video-placeholder {
+      text-align: center;
+      margin-top: 30px;
+      color: #f00;
+      font-size: 20px;
+      text-shadow: 0 0 5px red;
+    }
   </style>
 </head>
 <body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
@@ -134,13 +149,18 @@
     allow="autoplay">
   </iframe>
 
-  <img src="https://media.giphy.com/media/Qo2v8YFqGdN56/giphy.gif" alt="Hacker Animation" class="animated-img" />
-
   <div class="marquee">
     <span>haz33r on ur service - ethical hacker - fullstack dev - cyber explorer</span>
   </div>
 
-  <div class="terminal">
+  <div class="controls">
+    <button onclick="startSite()">Start</button>
+    <button onclick="stopSite()">Stop</button>
+  </div>
+
+  <div class="video-placeholder">[ video : content not available ]</div>
+
+  <div class="terminal" id="mainContent">
     <h1 class="glitch-text" data-text="root@haz33r:~$ ./launch.sh">root@haz33r:~$ ./launch.sh</h1>
     <p>> Welcome to my digital cave. I’m Haz33r — decoding the world, one packet at a time.</p>
 
@@ -164,8 +184,18 @@
     </pre>
 
     <h2>> Contact</h2>
-    <p>Email: <a href="mailto:haz33r@protonmail.com">rixxe12@protonmail.com</a></p>
+    <p>Email: <a href="mailto:haz33r@protonmail.com">haz33r@protonmail.com</a></p>
     <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
   </div>
+
+  <script>
+    function startSite() {
+      document.getElementById("mainContent").style.display = "block";
+    }
+    function stopSite() {
+      window.location.href = "https://pointerpointer.com";
+    }
+    document.getElementById("mainContent").style.display = "none";
+  </script>
 </body>
 </html>
