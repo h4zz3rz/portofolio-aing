@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rixxe Hacker Portfolio - Fullstack Developer & Ethical Hacker">
-  <meta name="author" content="Rixxe">
-  <title>haz33r on ur device lol.</title>
+  <meta name="description" content="Haz33r Hacker Portfolio - Fullstack Developer & Ethical Hacker">
+  <meta name="author" content="Haz33r">
+  <title>Haz33r Hacker Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
@@ -13,6 +13,7 @@
       color: #00ff00;
       font-family: 'Share Tech Mono', monospace;
       overflow-x: hidden;
+      margin: 0;
     }
 
     .animated-img {
@@ -28,11 +29,80 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+
+    .marquee {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      background: #111;
+      border-top: 1px solid #0f0;
+      border-bottom: 1px solid #0f0;
+      color: #0f0;
+      padding: 5px 0;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 12s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .terminal {
+      background-color: #111;
+      border: 2px solid #0f0;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    .glitch-text {
+      position: relative;
+      color: #0f0;
+      font-size: 20px;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .glitch-text::before {
+      animation: glitchTop 1s infinite linear alternate-reverse;
+      color: #f0f;
+    }
+
+    .glitch-text::after {
+      animation: glitchBottom 1s infinite linear alternate-reverse;
+      color: #0ff;
+    }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      20% { clip: rect(0, 9999px, 5px, 0); transform: translate(-2px, -2px); }
+      40% { clip: rect(0, 9999px, 0, 0); }
+      60% { clip: rect(0, 9999px, 5px, 0); transform: translate(2px, 2px); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      20% { clip: rect(5px, 9999px, 10px, 0); transform: translate(2px, 2px); }
+      40% { clip: rect(0, 9999px, 0, 0); }
+      60% { clip: rect(5px, 9999px, 10px, 0); transform: translate(-2px, -2px); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
   </style>
 </head>
 <body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
-  <audio id="bootSound" src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3" preload="auto"></audio>
-  <audio id="beep" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
   <iframe
     style="display:none;"
     src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/shinso-430912146/adele-skyfall-slowed&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"
@@ -44,134 +114,36 @@
 
   <img src="https://media.giphy.com/media/Qo2v8YFqGdN56/giphy.gif" alt="Hacker Animation" class="animated-img" />
 
-  <div class="loading-screen" id="loadingScreen">
-    <pre id="bootText">
-[BOOTING SYSTEM...]
-> Initializing BIOS...
-> Checking RAM... OK
-> Detecting Devices... OK
-> Mounting Filesystem... OK
-> Loading Terminal Interface...
-    </pre>
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
+  <div class="marquee">
+    <span>haz33r on ur service - ethical hacker - fullstack dev - cyber explorer</span>
   </div>
 
-  <div class="navbar" id="navbar" style="display: none;">
-    <div><strong>root@rixxe</strong></div>
-    <div>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+  <div class="terminal">
+    <h1 class="glitch-text" data-text="root@haz33r:~$ ./launch.sh">root@haz33r:~$ ./launch.sh</h1>
+    <p>> Welcome to my digital cave. I’m Haz33r — decoding the world, one packet at a time.</p>
 
-  <div class="marquee" id="marquee" style="display: none;">
-    <span>h4zz3r on ur service :)</span>
-  </div>
+    <h2>> Skills</h2>
+    <ul>
+      <li>Penetration Testing</li>
+      <li>Full-Stack Web Development</li>
+      <li>Reverse Engineering</li>
+      <li>Linux & Server Management</li>
+    </ul>
 
-  <div class="running-text" id="headerText">haz33r on ur service</div>
-
-  <div class="terminal" id="terminal" style="display: none;">
-    <h1 class="glitch-text" data-text="root@rixxe:~$ ./portfolio.sh">root@rixxe:~$ ./portfolio.sh</h1>
-    <p id="welcomeText"></p>
-    <div class="quote">"Hack the planet. Stay curious. Stay free."</div>
-
-    <div class="section" id="skills">
-      <h2 onclick="toggleSection('skillsContent')">[+] Skills</h2>
-      <div id="skillsContent" style="display:none;">
-        <p>- Penetration Testing</p>
-        <p>- Full-Stack Web Development</p>
-        <p>- Reverse Engineering</p>
-        <p>- Linux Administration</p>
-      </div>
-    </div>
-
-    <div class="section" id="projects">
-      <h2 onclick="toggleSection('projectsContent')">[+] Projects</h2>
-      <div id="projectsContent" style="display:none;">
-        <pre class="code">
+    <h2>> Projects</h2>
+    <pre>
 > g0d1z Bot Framework
-  - Next-level WA automation
-  - Stealth mode, Anti-ban logic
+  - WA automation ninja
+  - Built-in stealth & AI hooks
 
 > WDYA MD
-  - Multi-device modular bot
-  - Socket optimized, Low latency
-        </pre>
-      </div>
-    </div>
+  - Modular bot on multi-device
+  - Socket-based event engine
+    </pre>
 
-    <div class="section" id="contact">
-      <h2 onclick="toggleSection('contactContent')">[+] Contact</h2>
-      <div id="contactContent" style="display:none;">
-        <p>Email: <a href="mailto:rixxe12@protonmail.com">rixxe12@protonmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
-      </div>
-    </div>
-
-    <div id="terminalInput">
-      <span>root@rixxe:~$</span> <span id="userInput"></span><span class="blinker">█</span>
-    </div>
+    <h2>> Contact</h2>
+    <p>Email: <a href="mailto:haz33r@protonmail.com">haz33r@protonmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
   </div>
-
-  <script>
-    const progressBar = document.getElementById('progressBar');
-    const loadingScreen = document.getElementById('loadingScreen');
-    const bootSound = document.getElementById('bootSound');
-    const beep = document.getElementById('beep');
-    let progress = 0;
-
-    const interval = setInterval(() => {
-      progress++;
-      progressBar.style.width = progress + '%';
-      if (progress >= 100) {
-        clearInterval(interval);
-        loadingScreen.classList.add('hidden');
-        bootSound.play();
-        setTimeout(() => {
-          loadingScreen.style.display = 'none';
-          document.getElementById('navbar').style.display = 'flex';
-          document.getElementById('marquee').style.display = 'block';
-          document.getElementById('terminal').style.display = 'block';
-          document.getElementById('headerText').style.display = 'block';
-          typeWriter("> Welcome to my cyber world. I'm Rixxe, an ethical hacker and full-stack dev.", 'welcomeText');
-        }, 1000);
-      }
-    }, 30);
-
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      section.style.display = (section.style.display === 'none') ? 'block' : 'none';
-    }
-
-    function typeWriter(text, elementId, delay = 40, callback) {
-      let i = 0;
-      const target = document.getElementById(elementId);
-      function type() {
-        if (i < text.length) {
-          target.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(type, delay);
-        } else if (callback) {
-          callback();
-        }
-      }
-      type();
-    }
-
-    let input = "";
-    document.addEventListener('keydown', function (e) {
-      if (e.key.length === 1) {
-        input += e.key;
-      } else if (e.key === 'Backspace') {
-        input = input.slice(0, -1);
-      }
-      document.getElementById('userInput').textContent = input;
-      beep.currentTime = 0;
-      beep.play();
-    });
-  </script>
 </body>
 </html>
