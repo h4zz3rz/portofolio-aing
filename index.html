@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacker Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .loading-screen {
+      background: black;
+      color: #00ff00;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+      z-index: 1000;
+      text-align: left;
+      transition: opacity 1s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .progress {
+      width: 80%;
+      margin-top: 2rem;
+      background: #111;
+      border: 1px solid #00ff00;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: #00ff00;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    .glitch {
+      animation: glitch-smooth 0.6s ease-in-out;
+    }
+
+    @keyframes glitch-smooth {
+      0% { transform: translate(0, 0) skew(0deg); opacity: 1; }
+      20% { transform: translate(-3px, 2px) skew(-3deg); opacity: 0.8; }
+      40% { transform: translate(3px, -2px) skew(3deg); opacity: 0.6; }
+      60% { transform: translate(-2px, 3px) skew(-2deg); opacity: 0.8; }
+      80% { transform: translate(2px, -3px) skew(2deg); opacity: 0.9; }
+      100% { transform: translate(0, 0) skew(0deg); opacity: 1; }
+    }
+
+    .navbar {
+      background: #000;
+      padding: 1rem;
+      border-bottom: 1px solid #00ff00;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar a {
+      color: #00ff00;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    .marquee {
+      background: #000;
+      color: #00ff00;
+      padding: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .terminal {
+      padding: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .terminal h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin: 2rem 0;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid #00ff00;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #00ff00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .quote {
+      text-align: center;
+      margin-top: 2rem;
+      font-style: italic;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
+
+  <audio id="bootSound" src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3" preload="auto"></audio>
+  <iframe style="display:none;" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/calon4dofficial/bang-bang-bang-sound-bravy-marapthon-by-calon4d-calon4d&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" width="0" height="0" frameborder="no" allow="autoplay"></iframe>
+
+  <div class="loading-screen" id="loadingScreen">
+    <pre id="bootText">
+[BOOTING SYSTEM...]
+> Initializing BIOS...
+> Checking RAM... OK
+> Detecting Devices... OK
+> Mounting Filesystem... OK
+> Loading Terminal Interface...
+    </pre>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <div class="navbar" id="navbar" style="display: none;">
+    <div><strong>root@rixxe</strong></div>
+    <div>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <div class="marquee" id="marquee" style="display: none;">
+    <span>h4zz3r on ur service :)</span>
+  </div>
+
+  <div class="terminal" id="terminal" style="display: none;">
+    <h1>root@rixxe:~$ ./portfolio.sh</h1>
+    <p>> Welcome to my cyber world. I'm <strong>Rixxe</strong>, an ethical hacker and full-stack dev.</p>
+
+    <div class="quote">"Hack the planet. Stay curious. Stay free."</div>
+
+    <div class="section" id="skills">
+      <h2>Skills</h2>
+      <p>- Penetration Testing</p>
+      <p>- Full-Stack Web Development</p>
+      <p>- Reverse Engineering</p>
+      <p>- Linux Administration</p>
+    </div>
+
+    <div class="section" id="projects">
+      <h2>Projects</h2>
+      <p>> <strong>g0d1z Bot Framework:</strong> Next-level WhatsApp automation scripts with stealth mode and anti-ban logic.</p>
+      <p>> <strong>WDYA MD:</strong> Lightweight multi-device WhatsApp bot built with modular architecture and socket optimization.</p>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:rixxe12@protonmail.com">rixxe12@protonmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
+    </div>
+  </div>
+
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    const loadingScreen = document.getElementById('loadingScreen');
+    const bootSound = document.getElementById('bootSound');
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress++;
+      progressBar.style.width = progress + '%';
+      if (progress >= 100) {
+        clearInterval(interval);
+        loadingScreen.classList.add('hidden');
+        document.body.classList.add('glitch');
+        bootSound.play();
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';
+          document.getElementById('navbar').style.display = 'flex';
+          document.getElementById('marquee').style.display = 'block';
+          document.getElementById('terminal').style.display = 'block';
+          document.body.classList.remove('glitch');
+        }, 1000);
+      }
+    }, 30);
+  </script>
+</body>
+</html>
