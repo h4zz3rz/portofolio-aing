@@ -14,6 +14,19 @@
       font-family: 'Share Tech Mono', monospace;
       overflow-x: hidden;
       margin: 0;
+      padding-bottom: 100px;
+      background-image: radial-gradient(circle, #020202, #0f0 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+
+    a {
+      color: #0ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #f0f;
+      text-shadow: 0 0 5px #f0f;
     }
 
     .animated-img {
@@ -23,6 +36,7 @@
       width: 100px;
       z-index: 10;
       animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 5px #0f0);
     }
 
     @keyframes float {
@@ -39,6 +53,7 @@
       border-bottom: 1px solid #0f0;
       color: #0f0;
       padding: 5px 0;
+      text-shadow: 0 0 5px #0f0;
     }
 
     .marquee span {
@@ -53,17 +68,24 @@
     }
 
     .terminal {
-      background-color: #111;
+      background-color: #0a0a0a;
       border: 2px solid #0f0;
       padding: 20px;
       margin: 20px;
-      box-shadow: 0 0 10px #0f0;
+      box-shadow: 0 0 15px #0f0, inset 0 0 10px #0f0;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .terminal:hover {
+      transform: scale(1.01);
     }
 
     .glitch-text {
       position: relative;
       color: #0f0;
-      font-size: 20px;
+      font-size: 24px;
+      text-shadow: 0 0 5px #0f0;
     }
 
     .glitch-text::before,
@@ -142,7 +164,7 @@
     </pre>
 
     <h2>> Contact</h2>
-    <p>Email: <a href="mailto:haz33r@protonmail.com">haz33r@protonmail.com</a></p>
+    <p>Email: <a href="mailto:haz33r@protonmail.com">rixxe12@protonmail.com</a></p>
     <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
   </div>
 </body>
