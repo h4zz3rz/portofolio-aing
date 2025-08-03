@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rixxe Hacker Portfolio - Fullstack Developer & Ethical Hacker">
+  <meta name="author" content="Rixxe">
   <title>Hacker Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
@@ -15,10 +17,9 @@
     body {
       background-color: black;
       color: #00ff00;
-      font-family: 'Share Tech Mono', monospace;
+      font-family: 'Share Tech Mono', monospace, monospace;
       overflow-x: hidden;
       line-height: 1.6;
-      transition: all 0.3s ease;
     }
 
     .loading-screen {
@@ -57,19 +58,6 @@
       background: #00ff00;
       width: 0%;
       transition: width 0.1s ease;
-    }
-
-    .glitch {
-      animation: glitch-smooth 0.6s ease-in-out;
-    }
-
-    @keyframes glitch-smooth {
-      0% { transform: translate(0, 0) skew(0deg); opacity: 1; }
-      20% { transform: translate(-3px, 2px) skew(-3deg); opacity: 0.8; }
-      40% { transform: translate(3px, -2px) skew(3deg); opacity: 0.6; }
-      60% { transform: translate(-2px, 3px) skew(-2deg); opacity: 0.8; }
-      80% { transform: translate(2px, -3px) skew(2deg); opacity: 0.9; }
-      100% { transform: translate(0, 0) skew(0deg); opacity: 1; }
     }
 
     .navbar {
@@ -114,33 +102,56 @@
       animation: fadeIn 2s ease-in-out;
     }
 
-    .terminal h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .glitch-text {
+      position: relative;
+      color: #0f0;
     }
 
-    .section {
-      margin: 2rem 0;
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+    }
+
+    .glitch-text::before {
+      animation: glitchTop 1s infinite linear;
+      color: #f0f;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    .glitch-text::after {
+      animation: glitchBottom 1.5s infinite linear;
+      color: #0ff;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    @keyframes glitchTop {
+      5% { clip: rect(10px, 9999px, 50px, 0); left: 2px; }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      5% { clip: rect(60px, 9999px, 90px, 0); left: -2px; }
+      100% { clip: rect(0, 9999px, 0, 0); }
     }
 
     .section h2 {
       font-size: 1.5rem;
       border-bottom: 1px solid #00ff00;
       margin-bottom: 1rem;
+      cursor: pointer;
     }
 
-    a {
-      color: #00ff00;
-      text-decoration: none;
+    .section h2:hover {
+      color: #00ffcc;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .code {
+      background-color: #111;
+      border-left: 2px solid #00ff00;
+      padding: 1rem;
+      margin: 1rem 0;
     }
 
     .quote {
@@ -149,11 +160,24 @@
       font-style: italic;
       color: #00ffcc;
     }
+
+    #terminalInput {
+      margin-top: 2rem;
+      font-family: monospace;
+    }
+
+    .blinker {
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
-
   <audio id="bootSound" src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3" preload="auto"></audio>
+  <audio id="beep" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
   <iframe style="display:none;" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/calon4dofficial/bang-bang-bang-sound-bravy-marapthon-by-calon4d-calon4d&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" width="0" height="0" frameborder="no" allow="autoplay"></iframe>
 
   <div class="loading-screen" id="loadingScreen">
@@ -184,29 +208,45 @@
   </div>
 
   <div class="terminal" id="terminal" style="display: none;">
-    <h1>root@rixxe:~$ ./portfolio.sh</h1>
-    <p>> Welcome to my cyber world. I'm <strong>Rixxe</strong>, an ethical hacker and full-stack dev.</p>
-
+    <h1 class="glitch-text" data-text="root@rixxe:~$ ./portfolio.sh">root@rixxe:~$ ./portfolio.sh</h1>
+    <p id="welcomeText"></p>
     <div class="quote">"Hack the planet. Stay curious. Stay free."</div>
 
     <div class="section" id="skills">
-      <h2>Skills</h2>
-      <p>- Penetration Testing</p>
-      <p>- Full-Stack Web Development</p>
-      <p>- Reverse Engineering</p>
-      <p>- Linux Administration</p>
+      <h2 onclick="toggleSection('skillsContent')">[+] Skills</h2>
+      <div id="skillsContent" style="display:none;">
+        <p>- Penetration Testing</p>
+        <p>- Full-Stack Web Development</p>
+        <p>- Reverse Engineering</p>
+        <p>- Linux Administration</p>
+      </div>
     </div>
 
     <div class="section" id="projects">
-      <h2>Projects</h2>
-      <p>> <strong>g0d1z Bot Framework:</strong> Next-level WhatsApp automation scripts with stealth mode and anti-ban logic.</p>
-      <p>> <strong>WDYA MD:</strong> Lightweight multi-device WhatsApp bot built with modular architecture and socket optimization.</p>
+      <h2 onclick="toggleSection('projectsContent')">[+] Projects</h2>
+      <div id="projectsContent" style="display:none;">
+        <pre class="code">
+> g0d1z Bot Framework
+  - Next-level WA automation
+  - Stealth mode, Anti-ban logic
+
+> WDYA MD
+  - Multi-device modular bot
+  - Socket optimized, Low latency
+        </pre>
+      </div>
     </div>
 
     <div class="section" id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:rixxe12@protonmail.com">rixxe12@protonmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
+      <h2 onclick="toggleSection('contactContent')">[+] Contact</h2>
+      <div id="contactContent" style="display:none;">
+        <p>Email: <a href="mailto:rixxe12@protonmail.com">rixxe12@protonmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
+      </div>
+    </div>
+
+    <div id="terminalInput">
+      <span>root@rixxe:~$</span> <span id="userInput"></span><span class="blinker">█</span>
     </div>
   </div>
 
@@ -214,24 +254,57 @@
     const progressBar = document.getElementById('progressBar');
     const loadingScreen = document.getElementById('loadingScreen');
     const bootSound = document.getElementById('bootSound');
+    const beep = document.getElementById('beep');
     let progress = 0;
+
     const interval = setInterval(() => {
       progress++;
       progressBar.style.width = progress + '%';
       if (progress >= 100) {
         clearInterval(interval);
         loadingScreen.classList.add('hidden');
-        document.body.classList.add('glitch');
         bootSound.play();
         setTimeout(() => {
           loadingScreen.style.display = 'none';
           document.getElementById('navbar').style.display = 'flex';
           document.getElementById('marquee').style.display = 'block';
           document.getElementById('terminal').style.display = 'block';
-          document.body.classList.remove('glitch');
+          typeWriter("> Welcome to my cyber world. I'm Rixxe, an ethical hacker and full-stack dev.", 'welcomeText');
         }, 1000);
       }
     }, 30);
+
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function typeWriter(text, elementId, delay = 40, callback) {
+      let i = 0;
+      const target = document.getElementById(elementId);
+      function type() {
+        if (i < text.length) {
+          target.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, delay);
+        } else if (callback) {
+          callback();
+        }
+      }
+      type();
+    }
+
+    let input = "";
+    document.addEventListener('keydown', function (e) {
+      if (e.key.length === 1) {
+        input += e.key;
+      } else if (e.key === 'Backspace') {
+        input = input.slice(0, -1);
+      }
+      document.getElementById('userInput').textContent = input;
+      beep.currentTime = 0;
+      beep.play();
+    });
   </script>
 </body>
 </html>
