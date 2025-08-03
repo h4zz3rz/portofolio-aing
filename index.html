@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Rixxe Hacker Portfolio - Fullstack Developer & Ethical Hacker">
   <meta name="author" content="Rixxe">
-  <title>Hacker Portfolio</title>
+  <title>Haz33r ups.</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     * {
@@ -173,12 +173,41 @@
     @keyframes blink {
       50% { opacity: 0; }
     }
+
+    .running-text {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+      color: #00ff00;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid #00ff00;
+      width: 100%;
+      animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #00ff00; }
+    }
   </style>
 </head>
 <body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
   <audio id="bootSound" src="https://www.myinstants.com/media/sounds/windows-xp-startup.mp3" preload="auto"></audio>
   <audio id="beep" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
-  <iframe style="display:none;" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/calon4dofficial/bang-bang-bang-sound-bravy-marapthon-by-calon4d-calon4d&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false" width="0" height="0" frameborder="no" allow="autoplay"></iframe>
+  <iframe
+    style="display:none;"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/je-joseph-823954637/adele-skyfall-slowed-reverb-vibed-noc&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"
+    width="0"
+    height="0"
+    frameborder="no"
+    allow="autoplay">
+  </iframe>
 
   <div class="loading-screen" id="loadingScreen">
     <pre id="bootText">
@@ -206,6 +235,8 @@
   <div class="marquee" id="marquee" style="display: none;">
     <span>h4zz3r on ur service :)</span>
   </div>
+
+  <div class="running-text" id="headerText">haz33r on ur service</div>
 
   <div class="terminal" id="terminal" style="display: none;">
     <h1 class="glitch-text" data-text="root@rixxe:~$ ./portfolio.sh">root@rixxe:~$ ./portfolio.sh</h1>
@@ -269,6 +300,7 @@
           document.getElementById('navbar').style.display = 'flex';
           document.getElementById('marquee').style.display = 'block';
           document.getElementById('terminal').style.display = 'block';
+          document.getElementById('headerText').style.display = 'block';
           typeWriter("> Welcome to my cyber world. I'm Rixxe, an ethical hacker and full-stack dev.", 'welcomeText');
         }, 1000);
       }
