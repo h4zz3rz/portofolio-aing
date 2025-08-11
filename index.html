@@ -1,201 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Haz33r Hacker Portfolio - Fullstack Developer & Ethical Hacker">
-  <meta name="author" content="Haz33r">
-  <title>Haz33r ya??</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Share Tech Mono', monospace;
-      overflow-x: hidden;
-      margin: 0;
-      padding-bottom: 100px;
-      background-image: radial-gradient(circle, #020202, #0f0 1px, transparent 1px);
-      background-size: 4px 4px;
-    }
-
-    a {
-      color: #0ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: #f0f;
-      text-shadow: 0 0 5px #f0f;
-    }
-
-    .marquee {
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      background: #111;
-      border-top: 1px solid #0f0;
-      border-bottom: 1px solid #0f0;
-      color: #0f0;
-      padding: 5px 0;
-      text-shadow: 0 0 5px #0f0;
-    }
-
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 12s linear infinite;
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .terminal {
-      background-color: #0a0a0a;
-      border: 2px solid #0f0;
-      padding: 20px;
-      margin: 20px;
-      box-shadow: 0 0 15px #0f0, inset 0 0 10px #0f0;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .terminal:hover {
-      transform: scale(1.01);
-    }
-
-    .glitch-text {
-      position: relative;
-      color: #0f0;
-      font-size: 24px;
-      text-shadow: 0 0 5px #0f0;
-    }
-
-    .glitch-text::before,
-    .glitch-text::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .glitch-text::before {
-      animation: glitchTop 1s infinite linear alternate-reverse;
-      color: #f0f;
-    }
-
-    .glitch-text::after {
-      animation: glitchBottom 1s infinite linear alternate-reverse;
-      color: #0ff;
-    }
-
-    @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(0, 9999px, 5px, 0); transform: translate(-2px, -2px); }
-      40% { clip: rect(0, 9999px, 0, 0); }
-      60% { clip: rect(0, 9999px, 5px, 0); transform: translate(2px, 2px); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-
-    @keyframes glitchBottom {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(5px, 9999px, 10px, 0); transform: translate(2px, 2px); }
-      40% { clip: rect(0, 9999px, 0, 0); }
-      60% { clip: rect(5px, 9999px, 10px, 0); transform: translate(-2px, -2px); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-
-    .controls {
-      text-align: center;
-      margin: 30px auto;
-    }
-
-    .controls button {
-      background: #000;
-      color: #0f0;
-      border: 2px solid #0f0;
-      padding: 10px 20px;
-      font-family: 'Share Tech Mono', monospace;
-      cursor: pointer;
-      margin: 5px;
-      text-shadow: 0 0 5px #0f0;
-      box-shadow: 0 0 10px #0f0;
-    }
-
-    .controls button:hover {
-      background: #0f0;
-      color: #000;
-    }
-
-    .video-placeholder {
-      text-align: center;
-      margin-top: 30px;
-      color: #f00;
-      font-size: 20px;
-      text-shadow: 0 0 5px red;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Anda - Portofolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body oncontextmenu="event.preventDefault(); alert('kepo amat nih'); return false;">
-  <iframe
-    style="display:none;"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/shinso-430912146/adele-skyfall-slowed&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false"
-    width="0"
-    height="0"
-    frameborder="no"
-    allow="autoplay">
-  </iframe>
+<body>
 
-  <div class="marquee">
-    <span>haz33r on ur service - ethical hacker - fullstack dev - cyber explorer</span>
-  </div>
+    <header class="navbar">
+        <div class="logo">
+            <span class="code-font">Nama Anda</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="controls">
-    <button onclick="startSite()">Start</button>
-    <button onclick="stopSite()">Stop</button>
-  </div>
+    <main>
+        <section id="hero" class="container">
+            <div class="hero-content">
+                <h1 class="typing-effect">console.log("Halo Dunia!");</h1>
+                <p>Seorang Pengembang Web yang Berfokus pada Pengalaman Pengguna.</p>
+                <a href="#projects" class="btn-primary">Lihat Karya Saya</a>
+            </div>
+        </section>
 
-  <div class="video-placeholder">[ video : content not available ]</div>
+        <section id="about" class="container">
+            </section>
 
-  <div class="terminal" id="mainContent">
-    <h1 class="glitch-text" data-text="root@haz33r:~$ ./launch.sh">root@haz33r:~$ ./launch.sh</h1>
-    <p>> Welcome to my digital cave. I’m Haz33r — decoding the world, one packet at a time.</p>
+        <section id="projects" class="container">
+            </section>
 
-    <h2>> Skills</h2>
-    <ul>
-      <li>Penetration Testing</li>
-      <li>Full-Stack Web Development</li>
-      <li>Reverse Engineering</li>
-      <li>Linux & Server Management</li>
-    </ul>
+        <section id="contact" class="container">
+            </section>
+    </main>
 
-    <h2>> Projects</h2>
-    <pre>
-> g0d1z Bot Framework
-  - WA automation ninja
-  - Built-in stealth & AI hooks
+    <footer>
+        <p>&copy; 2025 Nama Anda. Hak Cipta Dilindungi.</p>
+    </footer>
 
-> WDYA MD
-  - Modular bot on multi-device
-  - Socket-based event engine
-    </pre>
-
-    <h2>> Contact</h2>
-    <p>Email: <a href="mailto:haz33r@protonmail.com">rixxe12@protonmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/h4zz3rz" target="_blank">github.com/h4zz3rz</a></p>
-  </div>
-
-  <script>
-    function startSite() {
-      document.getElementById("mainContent").style.display = "block";
-    }
-    function stopSite() {
-      window.location.href = "https://hanime.red";
-    }
-    document.getElementById("mainContent").style.display = "none";
-  </script>
 </body>
 </html>
