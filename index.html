@@ -537,7 +537,7 @@
             // --- FUNGSI UNTUK MENGHUBUNGKAN KE DEEPSEEK API VIA SERVER BACK-END VERCEL ---
             async function getRealAIResponse(userMessage) {
                 // URL ini akan otomatis dikenali oleh Vercel
-                const apiUrl = '/api/chat'; 
+                const apiUrl = '/chat.js'; 
 
                 try {
                     const response = await fetch(apiUrl, {
