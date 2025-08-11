@@ -1,572 +1,569 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3JZ - Portofolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /*
-         * CSS
-         */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3JZ - Portofolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /*
+         * CSS
+         */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700&display=swap');
 
-        :root {
-            --primary-blue: #0077B6;
-            --bg-color-light: #FFFFFF;
-            --bg-color-dark: #121212;
-            --text-color-light: #333333;
-            --text-color-dark: #F5F5F5;
-            --border-color-light: #E0E0E0;
-            --border-color-dark: #444;
-            --font-code: 'Roboto Mono', monospace;
-            --font-main: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
+        :root {
+            --primary-blue: #0077B6;
+            --bg-color-light: #FFFFFF;
+            --bg-color-dark: #121212;
+            --text-color-light: #333333;
+            --text-color-dark: #F5F5F5;
+            --border-color-light: #E0E0E0;
+            --border-color-dark: #444;
+            --font-code: 'Roboto Mono', monospace;
+            --font-main: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-        body {
-            font-family: var(--font-main);
-            color: var(--text-color-light);
-            background-color: var(--bg-color-light);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.5s, color 0.5s;
-        }
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color-light);
+            background-color: var(--bg-color-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s, color 0.5s;
+        }
 
-        body.dark-mode {
-            color: var(--text-color-dark);
-            background-color: var(--bg-color-dark);
-        }
+        body.dark-mode {
+            color: var(--text-color-dark);
+            background-color: var(--bg-color-dark);
+        }
 
-        .code-font {
-            font-family: var(--font-code);
-            color: var(--primary-blue);
-        }
+        .code-font {
+            font-family: var(--font-code);
+            color: var(--primary-blue);
+        }
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: var(--bg-color-light);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: background-color 0.5s, color 0.5s;
-        }
-        
-        body.dark-mode .navbar {
-            background-color: var(--bg-color-dark);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-        }
-        
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar a {
-            text-decoration: none;
-            color: var(--text-color-light);
-            transition: color 0.3s;
-        }
-        body.dark-mode .navbar a {
-            color: var(--text-color-dark);
-        }
-        .navbar a:hover, .navbar a.active {
-            color: var(--primary-blue);
-        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: var(--bg-color-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        
+        body.dark-mode .navbar {
+            background-color: var(--bg-color-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: var(--text-color-light);
+            transition: color 0.3s;
+        }
+        body.dark-mode .navbar a {
+            color: var(--text-color-dark);
+        }
+        .navbar a:hover, .navbar a.active {
+            color: var(--primary-blue);
+        }
 
-        #theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--text-color-light);
-            transition: color 0.3s;
-        }
-        body.dark-mode #theme-toggle {
-            color: var(--text-color-dark);
-        }
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color-light);
+            transition: color 0.3s;
+        }
+        body.dark-mode #theme-toggle {
+            color: var(--text-color-dark);
+        }
 
-        .container {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            padding-top: 5rem;
-        }
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-top: 5rem;
+        }
 
-        .typing-effect {
-            font-family: var(--font-code);
-            font-size: clamp(2rem, 5vw, 4rem);
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid var(--primary-blue);
-            animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
-        }
-        @keyframes typing { from { width: 0; } to { width: 100%; } }
-        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--primary-blue); } }
+        .typing-effect {
+            font-family: var(--font-code);
+            font-size: clamp(2rem, 5vw, 4rem);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid var(--primary-blue);
+            animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: var(--primary-blue); } }
 
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
-        }
-        .btn-primary:hover { background-color: #005f93; }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover { background-color: #005f93; }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-color-light);
-            transition: border-color 0.5s;
-        }
-        body.dark-mode footer {
-            border-color: var(--border-color-dark);
-        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color-light);
+            transition: border-color 0.5s;
+        }
+        body.dark-mode footer {
+            border-color: var(--border-color-dark);
+        }
 
-        /* Animasi Muncul saat Scroll */
-        .reveal-element {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        .reveal-element.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .projects-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .project-item {
-            border: 1px solid var(--border-color-light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: left;
-            transition: border-color 0.5s;
-        }
-        body.dark-mode .project-item {
-            border-color: var(--border-color-dark);
-        }
+        /* Animasi Muncul saat Scroll */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1), transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .reveal-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .projects-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .project-item {
+            border: 1px solid var(--border-color-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            transition: border-color 0.5s;
+        }
+        body.dark-mode .project-item {
+            border-color: var(--border-color-dark);
+        }
 
-        /* --- UI Chatbot --- */
-        #chat-bubble {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, background-color 0.3s;
-            z-index: 1001;
-        }
+        /* --- UI Chatbot --- */
+        #chat-bubble {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background-color 0.3s;
+            z-index: 1001;
+        }
 
-        #chat-bubble:hover {
-            transform: scale(1.1);
-        }
+        #chat-bubble:hover {
+            transform: scale(1.1);
+        }
 
-        #chat-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 350px;
-            height: 500px;
-            background-color: var(--bg-color-light);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            z-index: 1002;
-            transition: all 0.3s ease-in-out;
-            transform: scale(0);
-            transform-origin: bottom right;
-        }
-        
-        body.dark-mode #chat-container {
-            background-color: var(--bg-color-dark);
-        }
+        #chat-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 350px;
+            height: 500px;
+            background-color: var(--bg-color-light);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            z-index: 1002;
+            transition: all 0.3s ease-in-out;
+            transform: scale(0);
+            transform-origin: bottom right;
+        }
+        
+        body.dark-mode #chat-container {
+            background-color: var(--bg-color-dark);
+        }
 
-        #chat-container.open {
-            transform: scale(1);
-        }
+        #chat-container.open {
+            transform: scale(1);
+        }
 
-        #chat-header {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 1rem;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        #chat-header h3 {
-            margin: 0;
-            font-size: 1.1rem;
-        }
-        #chat-header button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+        #chat-header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 1rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        #chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-        #chat-messages {
-            flex-grow: 1;
-            padding: 1rem;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        #chat-messages::-webkit-scrollbar {
-            width: 8px;
-        }
-        #chat-messages::-webkit-scrollbar-thumb {
-            background: var(--border-color-light);
-            border-radius: 10px;
-        }
-        body.dark-mode #chat-messages::-webkit-scrollbar-thumb {
-            background: var(--border-color-dark);
-        }
+        #chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        #chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: var(--border-color-light);
+            border-radius: 10px;
+        }
+        body.dark-mode #chat-messages::-webkit-scrollbar-thumb {
+            background: var(--border-color-dark);
+        }
 
-        .message {
-            max-width: 80%;
-            padding: 0.7rem 1rem;
-            border-radius: 15px;
-            word-wrap: break-word;
-        }
-        .message.bot {
-            background-color: var(--border-color-light);
-            align-self: flex-start;
-        }
-        body.dark-mode .message.bot {
-            background-color: var(--border-color-dark);
-        }
-        .message.user {
-            background-color: var(--primary-blue);
-            color: white;
-            align-self: flex-end;
-        }
-        
-        .typing-indicator {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            background-color: var(--text-color-light);
-            border-radius: 50%;
-            display: inline-block;
-            animation: bounce 1.4s ease-in-out infinite;
-        }
-        body.dark-mode .typing-indicator span {
-            background-color: var(--text-color-dark);
-        }
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        @keyframes bounce {
-            0%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-8px); }
-        }
+        .message {
+            max-width: 80%;
+            padding: 0.7rem 1rem;
+            border-radius: 15px;
+            word-wrap: break-word;
+        }
+        .message.bot {
+            background-color: var(--border-color-light);
+            align-self: flex-start;
+        }
+        body.dark-mode .message.bot {
+            background-color: var(--border-color-dark);
+        }
+        .message.user {
+            background-color: var(--primary-blue);
+            color: white;
+            align-self: flex-end;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-color-light);
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+        body.dark-mode .typing-indicator span {
+            background-color: var(--text-color-dark);
+        }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+        }
 
-        #chat-form {
-            padding: 1rem;
-            border-top: 1px solid var(--border-color-light);
-            display: flex;
-            gap: 0.5rem;
-        }
-        body.dark-mode #chat-form {
-            border-color: var(--border-color-dark);
-        }
-        #chat-input {
-            flex-grow: 1;
-            border: 1px solid var(--border-color-light);
-            border-radius: 20px;
-            padding: 0.5rem 1rem;
-            outline: none;
-            background-color: var(--bg-color-light);
-            color: var(--text-color-light);
-        }
-        body.dark-mode #chat-input {
-            background-color: var(--bg-color-dark);
-            border-color: var(--border-color-dark);
-            color: var(--text-color-dark);
-        }
-        #chat-form button {
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #chat-form button:hover {
-            background-color: #005f93;
-        }
-    </style>
+        #chat-form {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color-light);
+            display: flex;
+            gap: 0.5rem;
+        }
+        body.dark-mode #chat-form {
+            border-color: var(--border-color-dark);
+        }
+        #chat-input {
+            flex-grow: 1;
+            border: 1px solid var(--border-color-light);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            outline: none;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
+        }
+        body.dark-mode #chat-input {
+            background-color: var(--bg-color-dark);
+            border-color: var(--border-color-dark);
+            color: var(--text-color-dark);
+        }
+        #chat-form button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #chat-form button:hover {
+            background-color: #005f93;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">
-            <span class="code-font">𝐏𝟒𝐘𝐕𝐋𝐱𝐃𝟑𝐉𝐙</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#about" class="nav-link">Tentang</a></li>
-                <li><a href="#projects" class="nav-link">Proyek</a></li>
-                <li><a href="#contact" class="nav-link">Kontak</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
-    </header>
+    <header class="navbar">
+        <div class="logo">
+            <span class="code-font">𝐏𝟒𝐘𝐕𝐋𝐱𝐃𝟑𝐉𝐙</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about" class="nav-link">Tentang</a></li>
+                <li><a href="#projects" class="nav-link">Proyek</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </header>
 
-    <main>
-        <section id="hero" class="container">
-            <div class="hero-content reveal-element">
-                <h1 class="typing-effect">async("D3JZ ganteng banget");</h1>
-                <p>Seorang Pengembang Web yang Berfokus pada Pengalaman Yang Kecil.</p>
-                <a href="#projects" class="btn-primary">Lihat Karya Saya</a>
-            </div>
-        </section>
+    <main>
+        <section id="hero" class="container">
+            <div class="hero-content reveal-element">
+                <h1 class="typing-effect">async("D3JZ ganteng banget");</h1>
+                <p>Seorang Pengembang Web yang Berfokus pada Pengalaman Yang Kecil.</p>
+                <a href="#projects" class="btn-primary">Lihat Karya Saya</a>
+            </div>
+        </section>
 
-        <section id="about" class="container">
-            <div class="hero-content reveal-element">
-                <h2 class="code-font">Tentang Saya</h2>
-                <p>Sebagai seorang **Fullstack JavaScript Developer**, saya adalah arsitek di balik layar yang membangun aplikasi web dari nol hingga tuntas. Saya mahir menggunakan JavaScript di sisi *front-end* untuk menciptakan antarmuka pengguna yang memukau dan interaktif, serta di sisi *back-end* untuk merancang server yang kuat dan fungsional. Saya memadukan desain yang estetis dengan kode yang efisien untuk menghasilkan pengalaman digital yang lancar dan tak terlupakan.</p>
-            </div>
-        </section>
+        <section id="about" class="container">
+            <div class="hero-content reveal-element">
+                <h2 class="code-font">Tentang Saya</h2>
+                <p>Sebagai seorang **Fullstack JavaScript Developer**, saya adalah arsitek di balik layar yang membangun aplikasi web dari nol hingga tuntas. Saya mahir menggunakan JavaScript di sisi *front-end* untuk menciptakan antarmuka pengguna yang memukau dan interaktif, serta di sisi *back-end* untuk merancang server yang kuat dan fungsional. Saya memadukan desain yang estetis dengan kode yang efisien untuk menghasilkan pengalaman digital yang lancar dan tak terlupakan.</p>
+            </div>
+        </section>
 
-        <section id="projects" class="container">
-            <div class="hero-content reveal-element">
-                <h2 class="code-font">Proyek</h2>
-                <p>Berikut adalah beberapa proyek yang menjadi bukti kecintaan saya pada dunia pemrograman. Setiap baris kode adalah wujud dari dedikasi dan inovasi.</p>
-                <ul class="projects-list">
-                    <li class="project-item">
-                        <h3 class="code-font">R4FF43L MD BOT</h3>
-                        <p>Sebuah mahakarya yang menembus batas komunikasi digital. R4FF43L MD BOT adalah bot WhatsApp canggih yang dirancang untuk mengotomatisasi interaksi, mengolah data *real-time*, dan memberikan respons cerdas. Dibuat dengan fondasi JavaScript yang kokoh, bot ini bukan sekadar alat, melainkan sebuah platform multifungsi yang berani mendefinisikan ulang efisiensi.</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <section id="projects" class="container">
+            <div class="hero-content reveal-element">
+                <h2 class="code-font">Proyek</h2>
+                <p>Berikut adalah beberapa proyek yang menjadi bukti kecintaan saya pada dunia pemrograman. Setiap baris kode adalah wujud dari dedikasi dan inovasi.</p>
+                <ul class="projects-list">
+                    <li class="project-item">
+                        <h3 class="code-font">R4FF43L MD BOT</h3>
+                        <p>Sebuah mahakarya yang menembus batas komunikasi digital. R4FF43L MD BOT adalah bot WhatsApp canggih yang dirancang untuk mengotomatisasi interaksi, mengolah data *real-time*, dan memberikan respons cerdas. Dibuat dengan fondasi JavaScript yang kokoh, bot ini bukan sekadar alat, melainkan sebuah platform multifungsi yang berani mendefinisikan ulang efisiensi.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-        <section id="contact" class="container">
-            <div class="hero-content reveal-element">
-                <h2 class="code-font">Kontak</h2>
-                <p>Tertarik untuk bekerja sama, atau sekadar ingin berbincang tentang kode? Jangan ragu untuk terhubung dengan saya. Saya selalu terbuka untuk kolaborasi dan ide-ide baru.</p>
-                <a href="mailto:rixxe12@proton.mail" class="btn-primary">Kirim Email</a>
-            </div>
-        </section>
-    </main>
+        <section id="contact" class="container">
+            <div class="hero-content reveal-element">
+                <h2 class="code-font">Kontak</h2>
+                <p>Tertarik untuk bekerja sama, atau sekadar ingin berbincang tentang kode? Jangan ragu untuk terhubung dengan saya. Saya selalu terbuka untuk kolaborasi dan ide-ide baru.</p>
+                <a href="mailto:rixxe12@proton.mail" class="btn-primary">Kirim Email</a>
+            </div>
+        </section>
+    </main>
 
-    <div id="chat-bubble">
-        <i class="fas fa-comment"></i>
-    </div>
-    
-    <div id="chat-container">
-        <div id="chat-header">
-            <h3>D3JZ AI Assistant</h3>
-            <button id="close-chat">&times;</button>
-        </div>
-        <div id="chat-messages">
-            <div class="message bot">
-                Halo! Saya AI Assistant D3JZ. Ada yang bisa saya bantu?
-            </div>
-        </div>
-        <form id="chat-form">
-            <input type="text" id="chat-input" placeholder="Ketik pesan di sini..." required>
-            <button type="submit"><i class="fas fa-paper-plane"></i></button>
-        </form>
-    </div>
+    <div id="chat-bubble">
+        <i class="fas fa-comment"></i>
+    </div>
+    
+    <div id="chat-container">
+        <div id="chat-header">
+            <h3>D3JZ AI Assistant</h3>
+            <button id="close-chat">&times;</button>
+        </div>
+        <div id="chat-messages">
+            <div class="message bot">
+                Halo! Saya AI Assistant D3JZ. Ada yang bisa saya bantu?
+            </div>
+        </div>
+        <form id="chat-form">
+            <input type="text" id="chat-input" placeholder="Ketik pesan di sini..." required>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 D3JZ. Hak Cipta Dilindungi.</p>
-    </footer>
-    
-    <script>
-        /*
-         * JAVASCRIPT - Mengelola animasi dan fitur interaktif, termasuk AI chat.
-         */
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Logika untuk Animasi Muncul saat Scroll (Intersection Observer)
-            const revealElements = document.querySelectorAll(".reveal-element");
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                    }
-                });
-            }, { threshold: 0.2 });
+    <footer>
+        <p>&copy; 2025 D3JZ. Hak Cipta Dilindungi.</p>
+    </footer>
+    
+    <script>
+        /*
+         * JAVASCRIPT - Mengelola animasi dan fitur interaktif, termasuk AI chat.
+         */
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Logika untuk Animasi Muncul saat Scroll (Intersection Observer)
+            const revealElements = document.querySelectorAll(".reveal-element");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                    }
+                });
+            }, { threshold: 0.2 });
 
-            revealElements.forEach(el => observer.observe(el));
+            revealElements.forEach(el => observer.observe(el));
 
-            // 2. Logika untuk Navigasi Aktif
-            const sections = document.querySelectorAll(".container");
-            const navLinks = document.querySelectorAll(".nav-link");
-            const updateActiveNav = () => {
-                let current = "";
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (scrollY >= sectionTop - 100) {
-                        current = section.getAttribute("id");
-                    }
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove("active");
-                    if (link.href.includes(current)) {
-                        link.classList.add("active");
-                    }
-                });
-            };
-            window.addEventListener("scroll", updateActiveNav);
-            updateActiveNav();
+            // 2. Logika untuk Navigasi Aktif
+            const sections = document.querySelectorAll(".container");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const updateActiveNav = () => {
+                let current = "";
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute("id");
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.href.includes(current)) {
+                        link.classList.add("active");
+                    }
+                });
+            };
+            window.addEventListener("scroll", updateActiveNav);
+            updateActiveNav();
 
-            // 3. Logika untuk Mengubah Tema (Mode Gelap/Terang)
-            const themeToggle = document.getElementById("theme-toggle");
-            const savedTheme = localStorage.getItem("theme");
+            // 3. Logika untuk Mengubah Tema (Mode Gelap/Terang)
+            const themeToggle = document.getElementById("theme-toggle");
+            const savedTheme = localStorage.getItem("theme");
 
-            if (savedTheme === "dark") {
-                document.body.classList.add("dark-mode");
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
 
-            themeToggle.addEventListener("click", () => {
-                document.body.classList.toggle("dark-mode");
-                const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-                localStorage.setItem("theme", currentTheme);
-                themeToggle.innerHTML = currentTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            });
+            themeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+                localStorage.setItem("theme", currentTheme);
+                themeToggle.innerHTML = currentTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
 
-            // 4. Logika untuk Chatbot
-            const chatBubble = document.getElementById("chat-bubble");
-            const chatContainer = document.getElementById("chat-container");
-            const closeChatBtn = document.getElementById("close-chat");
-            const chatForm = document.getElementById("chat-form");
-            const chatInput = document.getElementById("chat-input");
-            const chatMessages = document.getElementById("chat-messages");
+            // 4. Logika untuk Chatbot
+            const chatBubble = document.getElementById("chat-bubble");
+            const chatContainer = document.getElementById("chat-container");
+            const closeChatBtn = document.getElementById("close-chat");
+            const chatForm = document.getElementById("chat-form");
+            const chatInput = document.getElementById("chat-input");
+            const chatMessages = document.getElementById("chat-messages");
 
-            chatBubble.addEventListener("click", () => {
-                chatContainer.classList.add("open");
-                chatBubble.style.display = "none";
-            });
+            chatBubble.addEventListener("click", () => {
+                chatContainer.classList.add("open");
+                chatBubble.style.display = "none";
+            });
 
-            closeChatBtn.addEventListener("click", () => {
-                chatContainer.classList.remove("open");
-                chatBubble.style.display = "flex";
-            });
-            
-            chatForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const userMessage = chatInput.value.trim();
-                if (userMessage) {
-                    addMessage(userMessage, "user");
-                    chatInput.value = "";
-                    getChatResponse(userMessage);
-                }
-            });
+            closeChatBtn.addEventListener("click", () => {
+                chatContainer.classList.remove("open");
+                chatBubble.style.display = "flex";
+            });
+            
+            chatForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const userMessage = chatInput.value.trim();
+                if (userMessage) {
+                    addMessage(userMessage, "user");
+                    chatInput.value = "";
+                    getChatResponse(userMessage);
+                }
+            });
 
-            function addMessage(text, sender) {
-                const messageDiv = document.createElement("div");
-                messageDiv.classList.add("message", sender);
-                messageDiv.textContent = text;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("message", sender);
+                messageDiv.textContent = text;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
 
-            function getChatResponse(userMessage) {
-                addTypingIndicator();
-                getRealAIResponse(userMessage);
-            }
+            function getChatResponse(userMessage) {
+                addTypingIndicator();
+                getRealAIResponse(userMessage);
+            }
 
-            function addTypingIndicator() {
-                const typingIndicator = document.createElement("div");
-                typingIndicator.classList.add("message", "bot", "typing-indicator");
-                typingIndicator.innerHTML = '<span>.</span><span>.</span><span>.</span>';
-                chatMessages.appendChild(typingIndicator);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+            function addTypingIndicator() {
+                const typingIndicator = document.createElement("div");
+                typingIndicator.classList.add("message", "bot", "typing-indicator");
+                typingIndicator.innerHTML = '<span>.</span><span>.</span><span>.</span>';
+                chatMessages.appendChild(typingIndicator);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
 
-            function removeTypingIndicator() {
-                const typingIndicator = document.querySelector(".typing-indicator");
-                if (typingIndicator) {
-                    typingIndicator.remove();
-                }
-            }
+            function removeTypingIndicator() {
+                const typingIndicator = document.querySelector(".typing-indicator");
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
 
-            // --- FUNGSI UNTUK MENGHUBUNGKAN KE DEEPSEEK API VIA SERVER BACK-END VERCEL ---
-            async function getRealAIResponse(userMessage) {
-                // URL ini akan otomatis dikenali oleh Vercel
-                const apiUrl = '/chat.js'; 
+            // --- FUNGSI UNTUK MENGHUBUNGKAN KE DEEPSEEK API VIA SERVER BACK-END VERCEL ---
+            async function getRealAIResponse(userMessage) {
+                // URL ini akan otomatis dikenali oleh Vercel
+                const apiUrl = '/chat.js'; 
 
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ message: userMessage }),
-                    });
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message: userMessage }),
+                    });
 
-                    const data = await response.json();
-                    removeTypingIndicator();
+                    const data = await response.json();
+                    removeTypingIndicator();
 
-                    if (response.ok) {
-                        addMessage(data.response, "bot");
-                    } else {
-                        addMessage(data.error || "Maaf, terjadi kesalahan saat menghubungi server AI.", "bot");
-                    }
-                } catch (error) {
-                    console.error("Error fetching Deepseek response:", error);
-                    removeTypingIndicator();
-                    addMessage("Maaf, terjadi kesalahan jaringan atau server.", "bot");
-                }
-            }
-        });
-<script>
-    async function getRealAIResponse(userMessage) {
-    // URL ini akan otomatis dikenali oleh Vercel
-    const apiUrl = '/chat.js'; 
-        </script>
+                    if (response.ok) {
+                        addMessage(data.response, "bot");
+                    } else {
+                        addMessage(data.error || "Maaf, terjadi kesalahan saat menghubungi server AI.", "bot");
+                    }
+                } catch (error) {
+                    console.error("Error fetching Deepseek response:", error);
+                    removeTypingIndicator();
+                    addMessage("Maaf, terjadi kesalahan jaringan atau server.", "bot");
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>
