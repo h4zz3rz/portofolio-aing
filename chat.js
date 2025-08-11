@@ -1,4 +1,5 @@
-// File: /api/chat.js
+// File: chat.js
+// Letakkan di direktori utama (root)
 
 const fetch = require('node-fetch');
 
