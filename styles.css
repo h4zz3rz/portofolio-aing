@@ -8,6 +8,16 @@
     --card-bg: #FFFFFF;
 }
 
+/* Dark Mode */
+body.dark-mode {
+    --primary-blue: #0d6efd;
+    --dark-blue: #66a3ff;
+    --secondary-gray: #adb5bd;
+    --dark-text: #f8f9fa;
+    --light-bg: #121212;
+    --card-bg: #1e1e1e;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -15,6 +25,7 @@ body {
     color: var(--dark-text);
     line-height: 1.6;
     scroll-behavior: smooth;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Header & Navigasi */
@@ -26,6 +37,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: background-color 0.4s ease;
 }
 
 nav {
@@ -62,21 +74,60 @@ nav {
     color: var(--primary-blue);
 }
 
+/* Tombol Dark Mode */
+.dark-toggle {
+    cursor: pointer;
+    background: var(--primary-blue);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    margin-left: 1rem;
+    border: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dark-toggle:hover {
+    background: var(--dark-blue);
+    transform: scale(1.05);
+}
+
 /* Bagian Utama */
 .main-content {
     margin-top: 6rem;
 }
 
+/* Animasi Section */
 .page-section {
-    display: none; /* Sembunyikan semua section secara default */
+    display: none;
     padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     min-height: 80vh;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .page-section.active {
-    display: block; /* Tampilkan section yang aktif */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animasi masuk saat pertama kali load */
+body.landing .page-section.active {
+    animation: fadeSlideIn 1.2s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section-title {
@@ -147,7 +198,7 @@ nav {
     text-decoration: none;
     font-weight: 600;
     margin: 0 0.5rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .cta-primary {
@@ -210,6 +261,7 @@ nav {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .skill-icon {
@@ -230,7 +282,7 @@ nav {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.4s ease;
 }
 
 .project-card:hover {
@@ -261,6 +313,7 @@ nav {
     border-radius: 5px;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .project-links {
@@ -289,6 +342,7 @@ nav {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .form-group {
@@ -307,6 +361,9 @@ nav {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
+    background: var(--light-bg);
+    color: var(--dark-text);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .contact-form button {
@@ -325,6 +382,7 @@ nav {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .social-links a:hover {
@@ -337,4 +395,5 @@ nav {
     padding: 2rem;
     background-color: var(--card-bg);
     border-top: 1px solid #ddd;
+    transition: background-color 0.4s ease;
 }
